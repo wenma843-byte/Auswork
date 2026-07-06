@@ -5,7 +5,7 @@ import { getServiceBySlug } from "@/data/services";
 export async function generateMetadata({ params }) {
   const slug = typeof params?.slug === "string" ? params.slug : (await params)?.slug;
   const service = getServiceBySlug(slug);
-  if (!service) return { title: "Service | Gutter Cleaning" };
+  if (!service) return { title: "Service | Window Cleaning" };
   const category = service.category === "residential" ? "Residential" : "Commercial";
   return {
     title: `${service.title} | ${category}`,
@@ -24,7 +24,7 @@ export default async function ServiceDetailPage({ params }) {
       <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">
         <Link
           href="/AboutUs"
-          className="mb-6 inline-block text-sm font-medium text-teal-600 hover:text-teal-700"
+          className="mb-6 inline-block text-sm font-medium text-sky-600 hover:text-sky-700"
         >
           ← Back to About us
         </Link>
@@ -35,7 +35,7 @@ export default async function ServiceDetailPage({ params }) {
         <div className="mt-10">
           <Link
             href="/contact"
-            className="inline-block rounded-full bg-teal-600 px-6 py-3 text-sm font-medium text-white hover:bg-teal-700"
+            className="inline-block rounded-full bg-sky-600 px-6 py-3 text-sm font-medium text-white hover:bg-sky-700"
           >
             Get a quote
           </Link>

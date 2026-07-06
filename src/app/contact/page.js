@@ -29,12 +29,12 @@ export default function Contact() {
           Get a quote
         </h1>
         <p className="mt-4 text-zinc-600">
-          Tell us about your property (e.g. house size, storeys, last clean) and we&apos;ll get back to you with a free quote.
+          Tell us about your property (e.g. house size, storeys, interior/exterior windows) and we&apos;ll get back to you with a free quote.
         </p>
 
         {submitted ? (
-          <div className="mt-10 rounded-xl border border-teal-200 bg-teal-50 p-6">
-            <p className="font-medium text-teal-800">
+          <div className="mt-10 rounded-xl border border-sky-200 bg-sky-50 p-6">
+            <p className="font-medium text-sky-800">
               Thanks! We&apos;ll be in touch soon with your quote.
             </p>
           </div>
@@ -54,7 +54,7 @@ export default function Contact() {
                 name="name"
                 type="text"
                 required
-                className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 text-zinc-900 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500"
+                className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 text-zinc-900 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
               />
             </div>
             <div>
@@ -66,7 +66,7 @@ export default function Contact() {
                 name="email"
                 type="email"
                 required
-                className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 text-zinc-900 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500"
+                className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 text-zinc-900 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
               />
             </div>
             <div>
@@ -77,24 +77,24 @@ export default function Contact() {
                 id="phone"
                 name="phone"
                 type="tel"
-                className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 text-zinc-900 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500"
+                className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 text-zinc-900 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
               />
             </div>
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-zinc-700">
-                Property details (e.g. house size, storeys, last gutter clean, residential/commercial)
+                Property details (e.g. house size, storeys, window types, residential/commercial)
               </label>
               <textarea
                 id="message"
                 name="message"
                 rows={4}
-                className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 text-zinc-900 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500"
+                className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 text-zinc-900 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
               />
             </div>
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-full bg-teal-600 py-3 text-sm font-medium text-white hover:bg-teal-700 disabled:opacity-70 sm:w-auto sm:px-8"
+              className="w-full rounded-full bg-sky-600 py-3 text-sm font-medium text-white hover:bg-sky-700 disabled:opacity-70 sm:w-auto sm:px-8"
             >
               {loading ? "Sending…" : "Send request"}
             </button>

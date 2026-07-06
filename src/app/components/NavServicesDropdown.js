@@ -24,8 +24,8 @@ function ChevronDown({ className, open }) {
 
 /**
  * Nav item "Services" with dropdown:
- * - Residential → Gutter cleaning, Window cleaning
- * - Commercial → Gutter cleaning, Window cleaning
+ * - Residential → Window cleaning
+ * - Commercial → Window cleaning
  * Works with both hover and click (click for touch / reliability).
  */
 export default function NavServicesDropdown() {
@@ -49,7 +49,7 @@ export default function NavServicesDropdown() {
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="flex cursor-pointer items-center gap-1.5 text-lg font-medium text-zinc-600 hover:text-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 rounded whitespace-nowrap"
+        className="flex cursor-pointer items-center gap-1.5 text-lg font-medium text-zinc-600 hover:text-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 rounded whitespace-nowrap"
         aria-expanded={show}
         aria-haspopup="true"
       >
@@ -80,7 +80,7 @@ export default function NavServicesDropdown() {
                 <li key={s.slug}>
                   <Link
                     href={`/services/${s.slug}`}
-                    className="block px-4 py-2 text-sm text-zinc-700 hover:bg-teal-50 hover:text-teal-700"
+                    className="block px-4 py-2 text-sm text-zinc-700 hover:bg-sky-50 hover:text-sky-700"
                     onClick={() => setOpen(false)}
                   >
                     {s.title}
@@ -93,7 +93,7 @@ export default function NavServicesDropdown() {
         <div className="mt-1 border-t border-zinc-100 px-4 py-2">
           <Link
             href="/AboutUs"
-            className="text-xs font-medium text-teal-600 hover:text-teal-700"
+            className="text-xs font-medium text-sky-600 hover:text-sky-700"
             onClick={() => setOpen(false)}
           >
             View all services →

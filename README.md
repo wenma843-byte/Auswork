@@ -1,17 +1,18 @@
-# Gutter Cleaning Website
+# Window Cleaning Website
 
-A Next.js site for a gutter cleaning business. Built with **Next.js (App Router)**, **React**, and **Tailwind CSS**.
+A Next.js site for Renew Exterior Cleaning — professional window cleaning across Sydney. Built with **Next.js (App Router)**, **React**, and **Tailwind CSS**.
 
 ## Pages
 
-- **/** – Home (hero, why gutters matter, what we do, when to clean, why choose us, CTA)
-- **/services** – Service types (residential, commercial, downspout clearing, inspection)
-- **/contact** – Get a quote form (client component with state)
+- **/** – Home (hero, services, memberships, about, service areas, CTA)
+- **/AboutUs** – About us and service overview
+- **/services/[slug]** – Individual service detail pages
+- **/gallery** – Before and after photos
+- **/contact** – Get a quote form
 
 ## Run locally
 
 ```bash
-cd window-cleaning
 npm install   # if needed
 npm run dev
 ```

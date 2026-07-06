@@ -1,23 +1,25 @@
 /**
- * Services structure: Residential and Commercial each have Gutter cleaning and Window cleaning.
+ * Services structure: Residential and Commercial window cleaning.
  * slug is used in URLs: /services/[slug]
  */
+export const windowSpecialties = [
+  { slug: "interior-windows", title: "Interior Windows" },
+  { slug: "exterior-windows", title: "Exterior Windows" },
+  { slug: "track-cleaning", title: "Track Cleaning" },
+  { slug: "screen-cleaning", title: "Screen Cleaning" },
+  { slug: "pool-glass-cleaning", title: "Pool Glass Cleaning" },
+];
+
 export const serviceCategories = [
   {
     key: "residential",
     label: "Residential",
     services: [
       {
-        slug: "residential-gutter-cleaning",
-        title: "Gutter cleaning",
-        description:
-          "We clean gutters on houses and townhouses—single and two-storey. We remove leaves, pine needles, and debris from all runs, flush the system, and clear downspouts so water drains properly. One-off or regular visits.",
-      },
-      {
         slug: "residential-window-cleaning",
         title: "Window cleaning",
         description:
-          "Professional window cleaning for homes. We use water-fed poles and streak-free methods to leave your windows crystal clear. Interior and exterior available.",
+          "Professional window cleaning for homes. We use pure-water poles and streak-free methods to leave your glass crystal clear. Interior and exterior, tracks, frames and flyscreens included as standard.",
       },
     ],
   },
@@ -26,16 +28,10 @@ export const serviceCategories = [
     label: "Commercial",
     services: [
       {
-        slug: "commercial-gutter-cleaning",
-        title: "Gutter cleaning",
-        description:
-          "Gutter cleaning for offices, retail, and larger buildings. We work at height safely and can schedule around your opening hours. Includes box gutters, fascia-level gutters, and downspout clearing.",
-      },
-      {
         slug: "commercial-window-cleaning",
         title: "Window cleaning",
         description:
-          "Professional window cleaning for commercial properties. We handle multi-storey buildings, shopfronts, and office blocks with safe, efficient methods.",
+          "Professional window cleaning for commercial properties. We handle multi-storey buildings, shopfronts, and office blocks with safe, efficient methods and minimal disruption to your business.",
       },
     ],
   },

@@ -1,147 +1,241 @@
 import Link from "next/link";
-import Image from "next/image";
-import { services } from "@/data/services";
-import homeBackground from "@/Background.jpg";
-import gutterCleaningResidential from "@/home_page_photos/gutter_cleaning_residential.jpg";
-import gutterCleaningCommercial from "@/home_page_photos/gutter_cleaning_commercial.jpg";
-import windowCleaningResidential from "@/home_page_photos/window_cleaning_residential.jpg";
-import windowCleaningCommercial from "@/home_page_photos/window_cleaning_commercial.jpg";
+import { services, windowSpecialties } from "@/data/services";
+import { MediaPlaceholder, VideoPlaceholder } from "@/app/components/MediaPlaceholder";
+import HeroVideoBackground from "@/app/components/HeroVideoBackground";
 
-const serviceImages = {
-  "residential-gutter-cleaning": gutterCleaningResidential,
-  "residential-window-cleaning": windowCleaningResidential,
-  "commercial-gutter-cleaning": gutterCleaningCommercial,
-  "commercial-window-cleaning": windowCleaningCommercial,
-};
+const GOOGLE_REVIEW_URL = "https://g.page/r/Cavpt8wdrTT4EAE/review";
 
-// Replace with your Google Business review page URL (from Google Business Profile → Share review form)
-const GOOGLE_REVIEW_URL =
-  "https://g.page/r/Cavpt8wdrTT4EAE/review";
+const trustBadges = [
+  "Fully Insured",
+  "5.0 Google Rating",
+  "Streak-Free Guarantee",
+  "Sydney",
+];
+
+const stats = [
+  { value: "5.0", label: "Average Google rating" },
+  { value: "500+", label: "Homes cleaned" },
+  { value: "100%", label: "Satisfaction guarantee" },
+  { value: "5", label: "Specialist services" },
+];
+
+const whyRenew = [
+  {
+    title: "Detail is the whole job",
+    description:
+      "Glass, frames, tracks, sills and flyscreens. We clean what others call \"extra\" as standard, every single visit.",
+  },
+  {
+    title: "Insured & accountable",
+    description:
+      "Fully insured, fully trained crews, and a satisfaction guarantee that means we come back free if it's not perfect.",
+  },
+  {
+    title: "Genuinely good people",
+    description:
+      "On time, tidy, friendly and a little bit fun. The kind of crew you're happy to find on the driveway every quarter.",
+  },
+  {
+    title: "Pure-water finish",
+    description:
+      "Deionised water dries spot-free with no chemicals — better for your glass, your plants and the harbour.",
+  },
+  {
+    title: "On time, every time",
+    description:
+      "We text when we're on the way and turn up in the window we promised. Your day doesn't revolve around us.",
+  },
+  {
+    title: "Set & forget plans",
+    description:
+      "Recurring memberships keep the place shining year-round and save you up to $100 a clean. We just show up.",
+  },
+];
+
+const serviceAreas = [
+  "North Shore",
+  "Northern Beaches",
+  "Mosman",
+  "Manly",
+  "Castle Hill",
+  "Central Coast",
+];
 
 function GoogleStar() {
   return (
-    <svg className="h-6 w-6 text-amber-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+    <svg className="h-5 w-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
     </svg>
   );
 }
 
-function GoogleGLogo({ className }) {
+function SectionLabel({ children, className = "" }) {
   return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-label="Google"
-    >
-      <path
-        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-        fill="#4285F4"
-      />
-      <path
-        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-        fill="#34A853"
-      />
-      <path
-        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-        fill="#FBBC05"
-      />
-      <path
-        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-        fill="#EA4335"
-      />
-    </svg>
+    <p className={`text-sm font-semibold uppercase tracking-widest text-sky-600 ${className}`}>
+      {children}
+    </p>
   );
 }
 
 export default function Home() {
   return (
     <div>
-      {/* Home-only background: image + gradient so hero and nav area match; other pages use body bg */}
-      <div
-        className="hero-background-image fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url(${homeBackground.src})`,
-          opacity: 0.8,
-        }}
-        aria-hidden
-      />
-      <div
-        className="fixed inset-0 -z-10 bg-gradient-to-r from-black/50 to-black/20"
-        aria-hidden
-      />
-      {/* Hero – MINT-style layout: Google rating, headline, sub-headline, CTA */}
-      <section className="relative min-h-[60vh] px-4 py-20 sm:px-6 sm:py-28">
+      {/* Hero with video background */}
+      <section className="relative min-h-[88vh] overflow-hidden px-4 py-20 sm:px-6 sm:py-28 lg:py-36">
+        <HeroVideoBackground />
         <div className="relative mx-auto max-w-5xl">
-          {/* Google review – clickable, links to your Google review page */}
           <a
             href={GOOGLE_REVIEW_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="mb-6 inline-flex items-center gap-2 rounded-lg bg-white/10 px-3 py-2 backdrop-blur-sm transition hover:bg-white/20"
+            className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm transition hover:bg-white/20"
           >
             <span className="flex gap-0.5">
               {[1, 2, 3, 4, 5].map((i) => (
                 <GoogleStar key={i} />
               ))}
             </span>
-            <span className="text-sm font-medium text-white drop-shadow-sm">
-              5.0 stars on Google
-            </span>
-            <span className="ml-1 flex h-6 w-6 items-center justify-center">
-              <GoogleGLogo className="h-6 w-6" />
-            </span>
+            <span className="text-sm font-medium text-white">5.0 stars on Google</span>
           </a>
 
-          <h1 className="text-4xl font-extrabold tracking-tight text-white drop-shadow-lg sm:text-5xl lg:text-6xl xl:text-8xl">
-            Clean gutters.
+          <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-white drop-shadow-lg sm:text-5xl lg:text-7xl">
+            Dirty windows?
             <br />
-            Protect your home.
+            Not on our watch.
           </h1>
-          <p className="mt-4 max-w-2xl text-lg text-white/95 drop-shadow-md">
-            Experience the Renew difference—professional exterior cleaning you can trust, all year round.
+          <p className="mt-5 max-w-2xl text-lg text-white/90 drop-shadow-md sm:text-xl">
+            Dirty windows don&apos;t stand a chance on our watch. Streak-free, spotless glass for
+            Sydney&apos;s finest homes — every pane done right and guaranteed.
           </p>
-          <div className="mt-8">
+
+          <div className="mt-8 flex flex-wrap gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-teal-500 px-10 py-5 text-xl font-bold text-white shadow-lg hover:bg-teal-600 sm:px-12 sm:py-6 sm:text-2xl"
+              className="inline-flex items-center gap-2 rounded-full bg-sky-600 px-8 py-4 text-lg font-bold text-white shadow-lg transition hover:bg-sky-700"
             >
-              Get a free quote
+              Get My Free Quote
               <span aria-hidden>→</span>
             </Link>
+            <Link
+              href="/AboutUs"
+              className="inline-flex items-center gap-2 rounded-full border-2 border-white/60 px-8 py-4 text-lg font-semibold text-white backdrop-blur-sm transition hover:border-white hover:bg-white/10"
+            >
+              Explore Services
+            </Link>
+          </div>
+
+          <ul className="mt-10 flex flex-wrap gap-3">
+            {trustBadges.map((badge) => (
+              <li
+                key={badge}
+                className="rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-sm"
+              >
+                {badge}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* What to expect */}
+      <section className="border-t border-zinc-200 bg-white">
+        <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:items-center lg:py-24">
+          <div>
+            <SectionLabel>What to expect</SectionLabel>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
+              The clean you&apos;ll actually notice.
+            </h2>
+            <p className="mt-4 text-lg text-zinc-600">
+              Watch how we work, and see exactly why your neighbours keep calling us back. No
+              shortcuts, no streaks, no mess left behind.
+            </p>
+            <ul className="mt-8 space-y-4">
+              {[
+                "Uniformed, professional crews who treat your home like theirs",
+                "Pure-water poles reach three storeys without a single ladder mark",
+                "Tracks, frames and flyscreens detailed — not just the glass",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-zinc-700">
+                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-sky-100 text-sm font-bold text-sky-700">
+                    ✓
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="/AboutUs"
+              className="mt-8 inline-block text-sm font-semibold text-sky-600 hover:text-sky-700"
+            >
+              How We Work →
+            </Link>
+          </div>
+          <div className="space-y-4">
+            <MediaPlaceholder label="Photo coming soon" />
+            <div>
+              <p className="mb-2 text-sm font-semibold text-zinc-500">Watch the crew in action</p>
+              <VideoPlaceholder label="Video coming soon" />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Our Services – image cards with overlay text */}
+      {/* Stats */}
+      <section className="border-t border-zinc-200 bg-zinc-900">
+        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-4 py-14 sm:px-6 lg:grid-cols-4">
+          {stats.map((stat) => (
+            <div key={stat.label} className="text-center">
+              <p className="text-4xl font-extrabold text-sky-400 sm:text-5xl">{stat.value}</p>
+              <p className="mt-2 text-sm text-zinc-400">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Specialist services pills */}
+      <section className="border-t border-zinc-200 bg-zinc-50 py-10">
+        <div className="mx-auto flex max-w-6xl flex-wrap justify-center gap-3 px-4 sm:px-6">
+          {windowSpecialties.map((s) => (
+            <span
+              key={s.slug}
+              className="rounded-full border border-sky-200 bg-white px-5 py-2 text-sm font-medium text-sky-800 shadow-sm"
+            >
+              {s.title}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      {/* Core services */}
       <section className="border-t border-zinc-200 bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 text-center">
-          <p className="mx-auto inline-block px-4 py-1.5 text-lg font-medium text-white" style={{ backgroundColor: "rgb(113, 187, 178)" }}>
-            Services
-          </p>
-          <h2 className="mt-3 text-3xl font-bold uppercase tracking-tight sm:text-4xl" style={{ color: "rgb(113, 187, 178)" }}>
-            Our services
-          </h2>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+          <div className="text-center">
+            <SectionLabel>Our core services</SectionLabel>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
+              Every kind of window, handled.
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-600">
+              Interior and exterior glass, tracks, screens and pool glass. Everything that makes your
+              windows shine, handled by the same detail-obsessed team.
+            </p>
+          </div>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2">
             {services.map((service) => (
               <Link
                 key={service.slug}
                 href={`/services/${service.slug}`}
-                className="group relative flex aspect-[4/3] overflow-hidden rounded-xl"
+                className="group relative flex aspect-[16/10] overflow-hidden rounded-2xl border-2 border-dashed border-zinc-300 bg-zinc-100 shadow-sm transition hover:border-sky-300 hover:shadow-md"
               >
-                {serviceImages[service.slug] && (
-                  <Image
-                    src={serviceImages[service.slug]}
-                    alt=""
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  />
-                )}
-                <span className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                  <span className="block text-lg font-bold text-white">
-                    {service.category === "residential" ? "Residential" : "Commercial"} – {service.title}
+                <span className="absolute inset-0 flex items-center justify-center text-sm font-medium text-zinc-400">
+                  Photo coming soon
+                </span>
+                <span className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <span className="absolute bottom-0 left-0 right-0 p-6">
+                  <span className="block text-xl font-bold text-white">
+                    {service.category === "residential" ? "Residential" : "Commercial"} –{" "}
+                    {service.title}
                   </span>
+                  <span className="mt-1 block text-sm text-white/80">Learn more →</span>
                 </span>
               </Link>
             ))}
@@ -149,101 +243,227 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Plans – dirtymint-style */}
-      <section className="border-t border-zinc-200 bg-zinc-50">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <h2 className="text-center text-2xl font-semibold text-zinc-900 sm:text-3xl">
-            Choose your plan
+      {/* Why streak-free matters */}
+      <section className="border-t border-zinc-200 bg-sky-50">
+        <div className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 lg:py-24">
+          <SectionLabel>Why streak-free matters</SectionLabel>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
+            We keep watch so you never have to.
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-center text-zinc-600">
-            Save more with regular service. All plans include a thorough clean and downspout check.
+          <p className="mt-6 text-lg leading-relaxed text-zinc-600">
+            Dirty windows do more than dull your view. Left unchecked, salt air, pollen and
+            Sydney&apos;s hard water bake mineral spots and grime into the glass that get harder to
+            shift every month. That is exactly why streak-free cleaning matters, and why we keep
+            watch over the details other cleaners skip.
           </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-6">
-            <div className="flex h-[430px] w-[315px] flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-teal-500 hover:shadow-md">
-              <h3 className="text-center text-[36px] font-semibold uppercase tracking-wide text-teal-700">Quarterly</h3>
-              <p className="mt-4 text-center text-4xl font-bold text-zinc-900">25% off</p>
-              <p className="mt-1 text-center text-xs uppercase tracking-wide text-zinc-600">per cleaning</p>
-              <ul className="mt-2 flex flex-1 flex-col items-center justify-center space-y-4 text-[22px] text-zinc-700">
-                <li className="flex items-center justify-center gap-2">
-                  <span className="text-teal-500">✓</span> Best value
-                </li>
-                <li className="flex items-center justify-center gap-2">
-                  <span className="text-teal-500">✓</span> Priority scheduling
-                </li>
-                <li className="flex items-center justify-center gap-2">
-                  <span className="text-teal-500">✓</span> Consistent protection
-                </li>
-              </ul>
-              <Link
-                href="/contact"
-                className="mt-6 block w-full rounded-full bg-teal-600 py-3 text-center text-base font-semibold uppercase tracking-wide text-white hover:bg-teal-700"
+          <p className="mt-4 text-lg leading-relaxed text-zinc-600">
+            Our pure-water system lifts build-up without harsh chemicals, protecting the glass,
+            frames, seals and screens alike. Whether you book a one-off visit or a recurring cleaning
+            plan, every clean is finished to the same spotless standard and backed by our guarantee.
+            From harbourside homes in Mosman to beachside terraces in Manly, we keep windows shining
+            across the North Shore and Northern Beaches all year.
+          </p>
+          <Link
+            href="/AboutUs"
+            className="mt-8 inline-block font-semibold text-sky-600 hover:text-sky-700"
+          >
+            Explore our full range of window services →
+          </Link>
+        </div>
+      </section>
+
+      {/* Why Renew */}
+      <section className="border-t border-zinc-200 bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+          <div className="text-center">
+            <SectionLabel>Why Renew</SectionLabel>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
+              Tradies you&apos;ll actually
+              <br className="hidden sm:block" /> be happy to have over.
+            </h2>
+          </div>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {whyRenew.map((item) => (
+              <div
+                key={item.title}
+                className="rounded-2xl border border-zinc-200 bg-zinc-50 p-6 transition hover:border-sky-300 hover:shadow-md"
               >
-                Get a quote
-              </Link>
-            </div>
-            <div className="flex h-[430px] w-[315px] flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-teal-500 hover:shadow-md">
-              <h3 className="text-center text-[36px] font-semibold uppercase tracking-wide text-teal-700">Bi-Annual</h3>
-              <p className="mt-4 text-center text-4xl font-bold text-zinc-900">15% off</p>
-              <p className="mt-1 text-center text-xs uppercase tracking-wide text-zinc-600">per cleaning</p>
-              <ul className="mt-2 flex flex-1 flex-col items-center justify-center space-y-4 text-[22px] text-zinc-700">
-                <li className="flex items-center justify-center gap-2">
-                  <span className="text-teal-500">✓</span> Great savings
-                </li>
-                <li className="flex items-center justify-center gap-2">
-                  <span className="text-teal-500">✓</span> Seasonal coverage
-                </li>
-                <li className="flex items-center justify-center gap-2">
-                  <span className="text-teal-500">✓</span> Flexible dates
-                </li>
-              </ul>
-              <Link
-                href="/contact"
-                className="mt-6 block w-full rounded-full bg-teal-600 py-3 text-center text-base font-semibold uppercase tracking-wide text-white hover:bg-teal-700"
-              >
-                Get a quote
-              </Link>
-            </div>
-            <div className="flex h-[430px] w-[315px] flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-teal-500 hover:shadow-md">
-              <h3 className="text-center text-[36px] font-semibold uppercase tracking-wide text-teal-700">One-off</h3>
-              <p className="mt-4 text-center text-4xl font-bold text-zinc-900">Standard</p>
-              <p className="mt-1 text-center text-xs uppercase tracking-wide text-zinc-600">single visit</p>
-              <ul className="mt-2 flex flex-1 flex-col items-center justify-center space-y-4 text-[22px] text-zinc-700">
-                <li className="flex items-center justify-center gap-2">
-                  <span className="text-teal-500">✓</span> No commitment
-                </li>
-                <li className="flex items-center justify-center gap-2">
-                  <span className="text-teal-500">✓</span> Book when you need
-                </li>
-                <li className="flex items-center justify-center gap-2">
-                  <span className="text-teal-500">✓</span> Same quality service
-                </li>
-              </ul>
-              <Link
-                href="/contact"
-                className="mt-6 block w-full rounded-full bg-teal-600 py-3 text-center text-base font-semibold uppercase tracking-wide text-white hover:bg-teal-700"
-              >
-                Get a quote
-              </Link>
-            </div>
+                <h3 className="text-lg font-bold text-zinc-900">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-zinc-600">{item.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA - teal block */}
-      <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
-        <div className="rounded-2xl bg-teal-600 px-6 py-12 text-center">
-          <h2 className="text-2xl font-semibold text-white">
-            Ready for clean, flowing gutters?
+      {/* Memberships */}
+      <section className="border-t border-zinc-200 bg-zinc-50">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+          <div className="text-center">
+            <SectionLabel>Save big with</SectionLabel>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
+              Renew Memberships
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-zinc-600">
+              Stay spotless year-round and pocket the savings. Pick the rhythm that fits your home,
+              and cancel anytime.
+            </p>
+            <p className="mt-2 text-sm text-zinc-500">
+              Prices shown are savings per service vs one-off pricing.
+            </p>
+          </div>
+          <div className="mt-10 flex flex-wrap justify-center gap-6">
+            {[
+              {
+                name: "Quarterly",
+                saving: "25% off",
+                perks: ["Best value", "Priority scheduling", "Consistent shine"],
+              },
+              {
+                name: "Bi-Annual",
+                saving: "15% off",
+                perks: ["Great savings", "Seasonal coverage", "Flexible dates"],
+              },
+              {
+                name: "One-off",
+                saving: "Standard",
+                perks: ["No commitment", "Book when you need", "Same quality service"],
+              },
+            ].map((plan) => (
+              <div
+                key={plan.name}
+                className="flex w-[300px] flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-sky-500 hover:shadow-md"
+              >
+                <h3 className="text-center text-2xl font-bold uppercase tracking-wide text-sky-700">
+                  {plan.name}
+                </h3>
+                <p className="mt-4 text-center text-4xl font-bold text-zinc-900">{plan.saving}</p>
+                <p className="text-center text-xs uppercase tracking-wide text-zinc-500">
+                  per cleaning
+                </p>
+                <ul className="mt-6 flex flex-1 flex-col items-center space-y-3 text-zinc-700">
+                  {plan.perks.map((perk) => (
+                    <li key={perk} className="flex items-center gap-2">
+                      <span className="text-sky-500">✓</span> {perk}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/contact"
+                  className="mt-6 block w-full rounded-full bg-sky-600 py-3 text-center text-sm font-semibold uppercase tracking-wide text-white hover:bg-sky-700"
+                >
+                  Get a quote
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Who we are */}
+      <section className="border-t border-zinc-200 bg-white">
+        <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:items-center lg:py-24">
+          <MediaPlaceholder label="Team photo coming soon" />
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-widest text-sky-600">
+              Local · Owned &amp; operated
+            </p>
+            <SectionLabel>Who we are</SectionLabel>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
+              A window business built on the details.
+            </h2>
+            <p className="mt-4 text-lg text-zinc-600">
+              Renew started with a simple idea: do the job properly and treat people well. Today
+              we&apos;re a full window-cleaning crew trusted across Sydney&apos;s North Shore and
+              Northern Beaches, but the obsession with detail hasn&apos;t changed.
+            </p>
+            <ul className="mt-6 flex flex-wrap gap-3">
+              {["Friendly local crews", "Eco pure-water systems", "Satisfaction guarantee"].map(
+                (tag) => (
+                  <li
+                    key={tag}
+                    className="rounded-full bg-sky-50 px-4 py-1.5 text-sm font-medium text-sky-800"
+                  >
+                    {tag}
+                  </li>
+                )
+              )}
+            </ul>
+            <Link
+              href="/AboutUs"
+              className="mt-8 inline-block rounded-full bg-sky-600 px-6 py-3 text-sm font-semibold text-white hover:bg-sky-700"
+            >
+              Meet the Team
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="border-t border-zinc-200 bg-zinc-50">
+        <div className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6 lg:py-24">
+          <SectionLabel>Don&apos;t take our word for it</SectionLabel>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
+            Loved across Sydney
           </h2>
-          <p className="mt-2 text-teal-100">
-            Get a free, no-obligation quote. We&apos;ll get back to you quickly.
+          <div className="mt-10 grid gap-6 sm:grid-cols-3">
+            {[1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className="flex aspect-[4/3] flex-col items-center justify-center rounded-2xl border-2 border-dashed border-zinc-300 bg-white p-6"
+              >
+                <span className="text-sm font-medium text-zinc-400">Review coming soon</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Service areas */}
+      <section className="border-t border-zinc-200 bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6 lg:py-24">
+          <SectionLabel>Proudly serving</SectionLabel>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
+            Across Sydney&apos;s north, and a little beyond.
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-zinc-600">
+            From Mosman to Palm Beach, Castle Hill to the Central Coast. Find your area below for
+            local pricing and availability.
           </p>
-          <Link
-            href="/contact"
-            className="mt-6 inline-block rounded-full bg-white px-6 py-3 text-sm font-medium text-teal-700 hover:bg-teal-50"
-          >
-            Get a quote
-          </Link>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            {serviceAreas.map((area) => (
+              <span
+                key={area}
+                className="rounded-full border border-zinc-200 bg-zinc-50 px-5 py-2 text-sm font-medium text-zinc-700 shadow-sm"
+              >
+                {area}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="border-t border-zinc-200 bg-sky-600">
+        <div className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 lg:py-20">
+          <SectionLabel>
+            <span className="text-sky-200">Let&apos;s do this</span>
+          </SectionLabel>
+          <h2 className="mt-3 text-3xl font-bold text-white sm:text-4xl">
+            Book your clean today.
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-sky-100">
+            We&apos;re so confident in our work that if you&apos;re not 100% happy, we&apos;ll
+            re-clean it free. Sound fair? Get a no-obligation quote in under a minute.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Link
+              href="/contact"
+              className="inline-block rounded-full bg-white px-8 py-4 text-lg font-bold text-sky-700 hover:bg-sky-50"
+            >
+              Get My Free Quote
+            </Link>
+          </div>
         </div>
       </section>
 

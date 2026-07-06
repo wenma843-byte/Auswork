@@ -1,9 +1,7 @@
 import { Lexend } from "next/font/google";
 import Link from "next/link";
-import Image from "next/image";
 import NavServicesDropdown from "./components/NavServicesDropdown";
 import "./globals.css";
-import RenewLogo from "../RENEW LOGO NO BACKGROUND.png";
 
 const lexend = Lexend({
   variable: "--font-lexend",
@@ -12,8 +10,9 @@ const lexend = Lexend({
 });
 
 export const metadata = {
-  title: "Gutter Cleaning | Professional & Reliable",
-  description: "Professional gutter cleaning services. Residential & commercial. Prevent water damage—book a quote today.",
+  title: "Window Cleaning Sydney | Renew Exterior Cleaning",
+  description:
+    "Streak-free window cleaning for Sydney homes and businesses. Pure-water systems, tracks and screens included. Book a free quote today.",
 };
 
 function Nav() {
@@ -25,37 +24,32 @@ function Nav() {
       >
         <Link
           href="/"
-          className="flex shrink-0 items-center text-teal-600 hover:text-teal-700"
+          className="flex shrink-0 items-center text-sky-700 hover:text-sky-800"
           aria-label="Renew Exterior Cleaning home"
         >
-          <span className="block h-12 w-24 overflow-hidden sm:h-12 sm:w-36">
-            <Image
-              src={RenewLogo}
-              alt="Renew Exterior Cleaning logo"
-              className="h-full w-full object-cover object-center"
-              priority
-            />
+          <span className="text-xl font-extrabold tracking-tight sm:text-2xl">
+            Renew<span className="text-sky-500">.</span>
           </span>
         </Link>
         <ul className="flex min-w-0 w-full shrink flex-wrap items-center justify-center gap-x-6 gap-y-2 text-lg font-medium text-zinc-600 sm:w-auto sm:min-w-0 sm:flex-1 sm:justify-between sm:gap-0 sm:pl-8 md:pl-24 lg:pl-80">
           <li>
-            <Link href="/" className="hover:text-teal-600">
+            <Link href="/" className="hover:text-sky-600">
               Home
             </Link>
           </li>
           <li>
-            <Link href="/AboutUs" className="hover:text-teal-600">
+            <Link href="/AboutUs" className="hover:text-sky-600">
               About Us
             </Link>
           </li>
           <NavServicesDropdown />
           <li>
-            <Link href="/gallery" className="hover:text-teal-600">
+            <Link href="/gallery" className="hover:text-sky-600">
               Gallery
             </Link>
           </li>
           <li>
-            <Link href="/contact" className="hover:text-teal-600">
+            <Link href="/contact" className="hover:text-sky-600">
               Contact us
             </Link>
           </li>
