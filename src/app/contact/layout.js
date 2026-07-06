@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Get a Quote | Window Cleaning Sydney",
+  title: "Get a Quote | Auswork",
   description: "Request a free quote for professional window cleaning services.",
 };
 

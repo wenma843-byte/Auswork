@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { services, windowSpecialties } from "@/data/services";
+import { serviceAreas } from "@/data/site";
 import { MediaPlaceholder, VideoPlaceholder } from "@/app/components/MediaPlaceholder";
 import HeroVideoBackground from "@/app/components/HeroVideoBackground";
+import SectionLabel from "@/app/components/SectionLabel";
+import ServiceCard from "@/app/components/ServiceCard";
 
 const GOOGLE_REVIEW_URL = "https://g.page/r/Cavpt8wdrTT4EAE/review";
 
@@ -9,7 +12,7 @@ const trustBadges = [
   "Fully Insured",
   "5.0 Google Rating",
   "Streak-Free Guarantee",
-  "Sydney",
+  "Brisbane",
 ];
 
 const stats = [
@@ -19,7 +22,7 @@ const stats = [
   { value: "5", label: "Specialist services" },
 ];
 
-const whyRenew = [
+const whyAuswork = [
   {
     title: "Detail is the whole job",
     description:
@@ -38,7 +41,7 @@ const whyRenew = [
   {
     title: "Pure-water finish",
     description:
-      "Deionised water dries spot-free with no chemicals — better for your glass, your plants and the harbour.",
+      "Deionised water dries spot-free with no chemicals — better for your glass, your plants and the river.",
   },
   {
     title: "On time, every time",
@@ -52,28 +55,11 @@ const whyRenew = [
   },
 ];
 
-const serviceAreas = [
-  "North Shore",
-  "Northern Beaches",
-  "Mosman",
-  "Manly",
-  "Castle Hill",
-  "Central Coast",
-];
-
 function GoogleStar() {
   return (
     <svg className="h-5 w-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
     </svg>
-  );
-}
-
-function SectionLabel({ children, className = "" }) {
-  return (
-    <p className={`text-sm font-semibold uppercase tracking-widest text-sky-600 ${className}`}>
-      {children}
-    </p>
   );
 }
 
@@ -105,7 +91,7 @@ export default function Home() {
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-white/90 drop-shadow-md sm:text-xl">
             Dirty windows don&apos;t stand a chance on our watch. Streak-free, spotless glass for
-            Sydney&apos;s finest homes — every pane done right and guaranteed.
+            Brisbane&apos;s finest homes — every pane done right and guaranteed.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
@@ -117,7 +103,7 @@ export default function Home() {
               <span aria-hidden>→</span>
             </Link>
             <Link
-              href="/AboutUs"
+              href="/services"
               className="inline-flex items-center gap-2 rounded-full border-2 border-white/60 px-8 py-4 text-lg font-semibold text-white backdrop-blur-sm transition hover:border-white hover:bg-white/10"
             >
               Explore Services
@@ -219,25 +205,9 @@ export default function Home() {
               windows shine, handled by the same detail-obsessed team.
             </p>
           </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
-              <Link
-                key={service.slug}
-                href={`/services/${service.slug}`}
-                className="group relative flex aspect-[16/10] overflow-hidden rounded-2xl border-2 border-dashed border-zinc-300 bg-zinc-100 shadow-sm transition hover:border-sky-300 hover:shadow-md"
-              >
-                <span className="absolute inset-0 flex items-center justify-center text-sm font-medium text-zinc-400">
-                  Photo coming soon
-                </span>
-                <span className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                <span className="absolute bottom-0 left-0 right-0 p-6">
-                  <span className="block text-xl font-bold text-white">
-                    {service.category === "residential" ? "Residential" : "Commercial"} –{" "}
-                    {service.title}
-                  </span>
-                  <span className="mt-1 block text-sm text-white/80">Learn more →</span>
-                </span>
-              </Link>
+              <ServiceCard key={service.slug} service={service} />
             ))}
           </div>
         </div>
@@ -252,7 +222,7 @@ export default function Home() {
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-zinc-600">
             Dirty windows do more than dull your view. Left unchecked, salt air, pollen and
-            Sydney&apos;s hard water bake mineral spots and grime into the glass that get harder to
+            Brisbane&apos;s hard water bake mineral spots and grime into the glass that get harder to
             shift every month. That is exactly why streak-free cleaning matters, and why we keep
             watch over the details other cleaners skip.
           </p>
@@ -260,11 +230,11 @@ export default function Home() {
             Our pure-water system lifts build-up without harsh chemicals, protecting the glass,
             frames, seals and screens alike. Whether you book a one-off visit or a recurring cleaning
             plan, every clean is finished to the same spotless standard and backed by our guarantee.
-            From harbourside homes in Mosman to beachside terraces in Manly, we keep windows shining
-            across the North Shore and Northern Beaches all year.
+            From riverfront homes in New Farm to bayside terraces in Wynnum, we keep windows shining
+            across Greater Brisbane all year.
           </p>
           <Link
-            href="/AboutUs"
+            href="/services"
             className="mt-8 inline-block font-semibold text-sky-600 hover:text-sky-700"
           >
             Explore our full range of window services →
@@ -272,18 +242,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Renew */}
+      {/* Why Auswork */}
       <section className="border-t border-zinc-200 bg-white">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
           <div className="text-center">
-            <SectionLabel>Why Renew</SectionLabel>
+            <SectionLabel>Why Auswork</SectionLabel>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
               Tradies you&apos;ll actually
               <br className="hidden sm:block" /> be happy to have over.
             </h2>
           </div>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {whyRenew.map((item) => (
+            {whyAuswork.map((item) => (
               <div
                 key={item.title}
                 className="rounded-2xl border border-zinc-200 bg-zinc-50 p-6 transition hover:border-sky-300 hover:shadow-md"
@@ -302,7 +272,7 @@ export default function Home() {
           <div className="text-center">
             <SectionLabel>Save big with</SectionLabel>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
-              Renew Memberships
+              Auswork Memberships
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-zinc-600">
               Stay spotless year-round and pocket the savings. Pick the rhythm that fits your home,
@@ -373,9 +343,9 @@ export default function Home() {
               A window business built on the details.
             </h2>
             <p className="mt-4 text-lg text-zinc-600">
-              Renew started with a simple idea: do the job properly and treat people well. Today
-              we&apos;re a full window-cleaning crew trusted across Sydney&apos;s North Shore and
-              Northern Beaches, but the obsession with detail hasn&apos;t changed.
+              Auswork started with a simple idea: do the job properly and treat people well. Today
+              we&apos;re a full window-cleaning crew trusted across Greater Brisbane, but the obsession
+              with detail hasn&apos;t changed.
             </p>
             <ul className="mt-6 flex flex-wrap gap-3">
               {["Friendly local crews", "Eco pure-water systems", "Satisfaction guarantee"].map(
@@ -404,7 +374,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6 lg:py-24">
           <SectionLabel>Don&apos;t take our word for it</SectionLabel>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
-            Loved across Sydney
+            Loved across Brisbane
           </h2>
           <div className="mt-10 grid gap-6 sm:grid-cols-3">
             {[1, 2, 3].map((i) => (
@@ -424,10 +394,10 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6 lg:py-24">
           <SectionLabel>Proudly serving</SectionLabel>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
-            Across Sydney&apos;s north, and a little beyond.
+            Across Brisbane, and a little beyond.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-zinc-600">
-            From Mosman to Palm Beach, Castle Hill to the Central Coast. Find your area below for
+            From New Farm to Sandgate, Mount Gravatt to the Gold Coast. Find your area below for
             local pricing and availability.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
@@ -469,7 +439,7 @@ export default function Home() {
 
       <footer className="border-t border-zinc-200 bg-white py-8">
         <div className="mx-auto max-w-5xl px-4 text-center text-sm text-zinc-500 sm:px-6">
-          © {new Date().getFullYear()} Renew Exterior Cleaning. All rights reserved.
+          © {new Date().getFullYear()} Auswork. All rights reserved.
         </div>
       </footer>
     </div>

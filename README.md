@@ -1,12 +1,13 @@
-# Window Cleaning Website
+# Auswork
 
-A Next.js site for Renew Exterior Cleaning — professional window cleaning across Sydney. Built with **Next.js (App Router)**, **React**, and **Tailwind CSS**.
+A Next.js site for Auswork — professional window cleaning across Brisbane. Built with **Next.js (App Router)**, **React**, and **Tailwind CSS**.
 
 ## Pages
 
 - **/** – Home (hero, services, memberships, about, service areas, CTA)
-- **/AboutUs** – About us and service overview
+- **/services** – All services overview (matches dirtyshine structure)
 - **/services/[slug]** – Individual service detail pages
+- **/AboutUs** – About us and service overview
 - **/gallery** – Before and after photos
 - **/contact** – Get a quote form
 

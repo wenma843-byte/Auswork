@@ -4,7 +4,7 @@
  * Sends the quote request to your email via Resend.
  * Set in .env.local:
  *   RESEND_API_KEY=re_xxxx (from resend.com)
- *   CONTACT_EMAIL=Admin@renewexteriorcleaning.com.au
+ *   CONTACT_EMAIL=your-email@example.com
  */
 export async function sendQuoteRequest(formData) {
   const name = formData.get("name")?.toString() || "";

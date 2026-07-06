@@ -1,6 +1,5 @@
 import { Lexend } from "next/font/google";
 import Link from "next/link";
-import NavServicesDropdown from "./components/NavServicesDropdown";
 import "./globals.css";
 
 const lexend = Lexend({
@@ -10,9 +9,9 @@ const lexend = Lexend({
 });
 
 export const metadata = {
-  title: "Window Cleaning Sydney | Renew Exterior Cleaning",
+  title: "Window Cleaning Brisbane | Auswork",
   description:
-    "Streak-free window cleaning for Sydney homes and businesses. Pure-water systems, tracks and screens included. Book a free quote today.",
+    "Streak-free window cleaning for Brisbane homes and businesses. Pure-water systems, tracks and screens included. Book a free quote today.",
 };
 
 function Nav() {
@@ -25,10 +24,10 @@ function Nav() {
         <Link
           href="/"
           className="flex shrink-0 items-center text-sky-700 hover:text-sky-800"
-          aria-label="Renew Exterior Cleaning home"
+          aria-label="Auswork home"
         >
           <span className="text-xl font-extrabold tracking-tight sm:text-2xl">
-            Renew<span className="text-sky-500">.</span>
+            Auswork<span className="text-sky-500">.</span>
           </span>
         </Link>
         <ul className="flex min-w-0 w-full shrink flex-wrap items-center justify-center gap-x-6 gap-y-2 text-lg font-medium text-zinc-600 sm:w-auto sm:min-w-0 sm:flex-1 sm:justify-between sm:gap-0 sm:pl-8 md:pl-24 lg:pl-80">
@@ -42,7 +41,11 @@ function Nav() {
               About Us
             </Link>
           </li>
-          <NavServicesDropdown />
+          <li>
+            <Link href="/services" className="hover:text-sky-600">
+              Services
+            </Link>
+          </li>
           <li>
             <Link href="/gallery" className="hover:text-sky-600">
               Gallery
