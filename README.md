@@ -1,15 +1,15 @@
 # Auswork
 
-A Next.js site for Auswork — professional window cleaning across Brisbane. Built with **Next.js (App Router)**, **React**, and **Tailwind CSS**.
+A Next.js site for Auswork — professional window cleaning across Brisbane.
 
 ## Pages
 
-- **/** – Home (hero, services, memberships, about, service areas, CTA)
-- **/services** – All services overview (matches dirtyshine structure)
-- **/services/[slug]** – Individual service detail pages
-- **/AboutUs** – About us and service overview
-- **/gallery** – Before and after photos
-- **/contact** – Get a quote form
+- **/** – Home
+- **/services** – All services
+- **/areas** – Service areas
+- **/memberships** – Membership plans
+- **/reviews** – Customer reviews
+- **/contact** – Get a quote
 
 ## Run locally
 

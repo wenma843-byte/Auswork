@@ -1,11 +1,12 @@
 import Link from "next/link";
+import Image from "next/image";
 import { services } from "@/data/services";
+import { serviceImages, pagePhotos } from "@/data/images";
 import SectionLabel from "@/app/components/SectionLabel";
 import ServiceCard from "@/app/components/ServiceCard";
 import HowItWorks from "@/app/components/HowItWorks";
 import MembershipPlans from "@/app/components/MembershipPlans";
 import ReviewsSection from "@/app/components/ReviewsSection";
-import { MediaPlaceholder } from "@/app/components/MediaPlaceholder";
 
 export const metadata = {
   title: "Services, Window, Track, Screen & Pool Glass Cleaning | Auswork",
@@ -16,10 +17,9 @@ export const metadata = {
 export default function ServicesPage() {
   return (
     <div>
-      {/* Hero */}
       <section className="relative overflow-hidden bg-zinc-900">
-        <div className="absolute inset-0 opacity-40">
-          <MediaPlaceholder label="" aspect="aspect-auto h-full min-h-[420px] rounded-none border-0" />
+        <div className="absolute inset-0 opacity-50">
+          <Image src={pagePhotos.servicesHero} alt="" fill className="object-cover" sizes="100vw" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
         <div className="relative mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-28">
@@ -31,11 +31,11 @@ export default function ServicesPage() {
             <span className="text-white">Services</span>
           </nav>
           <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Everything that makes your windows shine.
+            Professional window cleaning across Brisbane.
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-white/90 sm:text-xl">
-            Five specialist window services, one detail-obsessed crew. From interior glass to pool
-            fencing, we sweat every pane, track and screen.
+            Interior and exterior glass, tracks, screens and pool fencing — five specialist services,
+            one detail-obsessed crew that sweats every pane.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
@@ -48,21 +48,25 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Services grid */}
       <section className="border-t border-zinc-200 bg-white">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
           <div className="text-center">
             <SectionLabel>Our services</SectionLabel>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
-              Every kind of window, handled
+              Five services. Every detail covered.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-600">
-              Tap any service for the full details, what&apos;s included and local pricing.
+              Tap a service below to see what&apos;s included, how we work, and get a quote for your
+              home or business in Greater Brisbane.
             </p>
           </div>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
-              <ServiceCard key={service.slug} service={service} />
+              <ServiceCard
+                key={service.slug}
+                service={service}
+                image={serviceImages[service.slug]}
+              />
             ))}
           </div>
         </div>
@@ -72,7 +76,6 @@ export default function ServicesPage() {
       <MembershipPlans />
       <ReviewsSection />
 
-      {/* CTA */}
       <section className="border-t border-zinc-200 bg-sky-600">
         <div className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 lg:py-20">
           <SectionLabel>

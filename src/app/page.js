@@ -1,10 +1,12 @@
 import Link from "next/link";
+import Image from "next/image";
 import { services, windowSpecialties } from "@/data/services";
 import { serviceAreas } from "@/data/site";
-import { MediaPlaceholder, VideoPlaceholder } from "@/app/components/MediaPlaceholder";
+import { serviceImages, pagePhotos } from "@/data/images";
 import HeroVideoBackground from "@/app/components/HeroVideoBackground";
 import SectionLabel from "@/app/components/SectionLabel";
 import ServiceCard from "@/app/components/ServiceCard";
+import ReviewsSection from "@/app/components/ReviewsSection";
 
 const GOOGLE_REVIEW_URL = "https://g.page/r/Cavpt8wdrTT4EAE/review";
 
@@ -150,17 +152,40 @@ export default function Home() {
               ))}
             </ul>
             <Link
-              href="/AboutUs"
+              href="/services"
               className="mt-8 inline-block text-sm font-semibold text-sky-600 hover:text-sky-700"
             >
               How We Work →
             </Link>
           </div>
           <div className="space-y-4">
-            <MediaPlaceholder label="Photo coming soon" />
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
+              <Image
+                src={pagePhotos.expectPhoto}
+                alt="Professional window cleaning crew at work"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
             <div>
               <p className="mb-2 text-sm font-semibold text-zinc-500">Watch the crew in action</p>
-              <VideoPlaceholder label="Video coming soon" />
+              <div className="relative aspect-video overflow-hidden rounded-2xl shadow-xl">
+                <Image
+                  src={pagePhotos.expectVideoPoster}
+                  alt="Window cleaning in progress"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-white/80 bg-black/40">
+                    <svg className="ml-1 h-7 w-7 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -207,7 +232,7 @@ export default function Home() {
           </div>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
-              <ServiceCard key={service.slug} service={service} />
+              <ServiceCard key={service.slug} service={service} image={serviceImages[service.slug]} />
             ))}
           </div>
         </div>
@@ -228,17 +253,29 @@ export default function Home() {
           </p>
           <p className="mt-4 text-lg leading-relaxed text-zinc-600">
             Our pure-water system lifts build-up without harsh chemicals, protecting the glass,
-            frames, seals and screens alike. Whether you book a one-off visit or a recurring cleaning
-            plan, every clean is finished to the same spotless standard and backed by our guarantee.
+            frames, seals and screens alike. Whether you book a one-off visit or a{" "}
+            <Link href="/memberships" className="font-semibold text-sky-600 hover:text-sky-700">
+              recurring cleaning plan
+            </Link>
+            , every clean is finished to the same spotless standard and backed by our guarantee.
             From riverfront homes in New Farm to bayside terraces in Wynnum, we keep windows shining
             across Greater Brisbane all year.
           </p>
-          <Link
-            href="/services"
-            className="mt-8 inline-block font-semibold text-sky-600 hover:text-sky-700"
-          >
-            Explore our full range of window services →
-          </Link>
+          <p className="mt-4 text-lg leading-relaxed text-zinc-600">
+            Explore our{" "}
+            <Link href="/services" className="font-semibold text-sky-600 hover:text-sky-700">
+              full range of window services
+            </Link>
+            , get to know{" "}
+            <Link href="/#who-we-are" className="font-semibold text-sky-600 hover:text-sky-700">
+              the team behind Auswork
+            </Link>
+            , or{" "}
+            <Link href="/areas" className="font-semibold text-sky-600 hover:text-sky-700">
+              check the suburbs we cover
+            </Link>{" "}
+            to book your first clean.
+          </p>
         </div>
       </section>
 
@@ -279,7 +316,10 @@ export default function Home() {
               and cancel anytime.
             </p>
             <p className="mt-2 text-sm text-zinc-500">
-              Prices shown are savings per service vs one-off pricing.
+              Prices shown are savings per service vs one-off pricing.{" "}
+              <Link href="/memberships" className="font-semibold text-sky-600 hover:text-sky-700">
+                See full plan details →
+              </Link>
             </p>
           </div>
           <div className="mt-10 flex flex-wrap justify-center gap-6">
@@ -331,9 +371,17 @@ export default function Home() {
       </section>
 
       {/* Who we are */}
-      <section className="border-t border-zinc-200 bg-white">
+      <section id="who-we-are" className="border-t border-zinc-200 bg-white">
         <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:items-center lg:py-24">
-          <MediaPlaceholder label="Team photo coming soon" />
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
+            <Image
+              src={pagePhotos.teamPhoto}
+              alt="The Auswork window cleaning team"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </div>
           <div>
             <p className="text-sm font-semibold uppercase tracking-widest text-sky-600">
               Local · Owned &amp; operated
@@ -360,34 +408,16 @@ export default function Home() {
               )}
             </ul>
             <Link
-              href="/AboutUs"
+              href="/contact"
               className="mt-8 inline-block rounded-full bg-sky-600 px-6 py-3 text-sm font-semibold text-white hover:bg-sky-700"
             >
-              Meet the Team
+              Get a Quote
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="border-t border-zinc-200 bg-zinc-50">
-        <div className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6 lg:py-24">
-          <SectionLabel>Don&apos;t take our word for it</SectionLabel>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
-            Loved across Brisbane
-          </h2>
-          <div className="mt-10 grid gap-6 sm:grid-cols-3">
-            {[1, 2, 3].map((i) => (
-              <div
-                key={i}
-                className="flex aspect-[4/3] flex-col items-center justify-center rounded-2xl border-2 border-dashed border-zinc-300 bg-white p-6"
-              >
-                <span className="text-sm font-medium text-zinc-400">Review coming soon</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ReviewsSection />
 
       {/* Service areas */}
       <section className="border-t border-zinc-200 bg-white">
@@ -410,6 +440,12 @@ export default function Home() {
               </span>
             ))}
           </div>
+          <Link
+            href="/areas"
+            className="mt-8 inline-block font-semibold text-sky-600 hover:text-sky-700"
+          >
+            View all service areas →
+          </Link>
         </div>
       </section>
 

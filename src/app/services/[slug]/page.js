@@ -1,12 +1,13 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getServiceBySlug, getOtherServices } from "@/data/services";
 import { serviceFaqs } from "@/data/content";
+import { serviceImages } from "@/data/images";
 import SectionLabel from "@/app/components/SectionLabel";
 import ServiceCard from "@/app/components/ServiceCard";
 import HowItWorks from "@/app/components/HowItWorks";
 import ReviewsSection from "@/app/components/ReviewsSection";
-import { MediaPlaceholder } from "@/app/components/MediaPlaceholder";
 
 export async function generateStaticParams() {
   const { services } = await import("@/data/services");
@@ -31,13 +32,16 @@ export default async function ServiceDetailPage({ params }) {
   if (!service) notFound();
 
   const otherServices = getOtherServices(slug).slice(0, 4);
+  const heroImage = serviceImages[service.slug];
 
   return (
     <div>
       {/* Hero */}
       <section className="relative overflow-hidden bg-zinc-900">
-        <div className="absolute inset-0 opacity-40">
-          <MediaPlaceholder label="" aspect="aspect-auto h-full min-h-[420px] rounded-none border-0" />
+        <div className="absolute inset-0 opacity-50">
+          {heroImage && (
+            <Image src={heroImage} alt="" fill className="object-cover" sizes="100vw" priority />
+          )}
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
         <div className="relative mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-28">
@@ -72,8 +76,16 @@ export default async function ServiceDetailPage({ params }) {
       {/* Intro */}
       <section className="border-t border-zinc-200 bg-white">
         <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:items-center lg:py-24">
-          <div className="relative">
-            <MediaPlaceholder label="Photo coming soon" />
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
+            {heroImage && (
+              <Image
+                src={heroImage}
+                alt={service.name}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            )}
             <div className="absolute bottom-4 right-4 flex items-center gap-3 rounded-xl bg-white px-4 py-3 shadow-lg">
               <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-sky-500 text-white">
                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.7}>
@@ -154,7 +166,7 @@ export default async function ServiceDetailPage({ params }) {
           </div>
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
             {otherServices.map((s) => (
-              <ServiceCard key={s.slug} service={s} />
+              <ServiceCard key={s.slug} service={s} image={serviceImages[s.slug]} />
             ))}
           </div>
         </div>

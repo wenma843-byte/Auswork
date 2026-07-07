@@ -1,12 +1,14 @@
 "use client";
 
+import { pagePhotos } from "@/data/images";
+
 /**
- * Full-bleed autoplay hero background, matching dirtyshine.com.au hero video pattern.
- * Place your file at public/video/hero.mp4 (optional poster at public/video/hero-poster.jpg).
+ * Full-bleed autoplay hero background.
+ * Video: public/video/hero.mp4 (stock footage, no branded logos).
  */
 export default function HeroVideoBackground({
   src = "/video/hero.mp4",
-  poster = "/video/hero-poster.jpg",
+  poster = pagePhotos.heroPoster.src,
 }) {
   return (
     <div className="absolute inset-0 -z-10 overflow-hidden" aria-hidden>

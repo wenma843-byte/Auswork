@@ -8,7 +8,7 @@ export const services = [
     short: "Interior Windows",
     tagline: "Crystal-clear glass from the inside.",
     blurb:
-      "Smudges, dust and fingerprints gone, interior glass cleaned and hand-detailed so every room feels brighter.",
+      "Hand-detailed interior panes, sills and edges — smudges, dust and fingerprints gone so every room feels brighter.",
     intro:
       "The inside of your glass cops fingerprints, dust, cooking film and the odd pet nose-print. We hand-clean every interior pane, wipe the sills and detail the edges, leaving rooms brighter and glass invisibly clear, shoes off and floors protected the whole time.",
     included: [
@@ -26,7 +26,7 @@ export const services = [
     short: "Exterior Windows",
     tagline: "Spotless glass, top to bottom.",
     blurb:
-      "Pure-water poles reach every exterior pane up to four storeys, no ladders, no marks, no streaks.",
+      "Pure-water poles reach every exterior pane up to four storeys — spotless glass with no ladders, marks or streaks.",
     intro:
       "Salt and grime build up fast on Brisbane's exterior glass. Our water-fed pure-water poles safely reach up to four storeys from the ground, lifting the build-up and drying spot-free with no detergents and no ladder marks on your home.",
     included: [
@@ -47,7 +47,7 @@ export const services = [
     short: "Track Cleaning",
     tagline: "The detail everyone else skips.",
     blurb:
-      "Window and door tracks dug out, scrubbed and vacuumed so they run smooth and look brand new.",
+      "Tracks and channels dug out, scrubbed and vacuumed — sliding doors and windows that run smooth again.",
     intro:
       "Tracks are where the grime hides, dirt, leaves, dead bugs and grit that jam your windows and doors. We dig them out, scrub the channels and vacuum every corner so they slide smoothly and look factory-fresh again.",
     included: [
@@ -67,7 +67,7 @@ export const services = [
     short: "Screen Cleaning",
     tagline: "Fly screens that breathe again.",
     blurb:
-      "Screens removed, washed, de-dusted and re-fitted, clearer views and better airflow through every window.",
+      "Fly screens removed, washed and re-fitted — clearer views and better airflow through every window.",
     intro:
       "Fly screens trap a surprising amount of dust, pollen and cobwebs that dull your view and choke the airflow. We carefully remove each screen, wash and de-dust the mesh, then re-fit it, so you get clearer views and fresh air moving through the house again.",
     included: [
@@ -87,7 +87,7 @@ export const services = [
     short: "Pool Glass",
     tagline: "Frameless glass without a smudge.",
     blurb:
-      "Glass pool fencing and balustrades polished streak-free, with calcium and splash marks lifted away.",
+      "Pool fencing and balustrades polished streak-free — calcium, splash marks and hard-water spots lifted away.",
     intro:
       "Frameless glass pool fencing shows every splash, fingerprint and calcium spot. We clean and polish both sides streak-free, lift hard-water and mineral marks, and leave your pool surrounds razor-sharp, so the glass disappears and the view doesn't.",
     included: [
