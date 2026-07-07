@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ausworkLogo from "@/auswork_Logo.png";
+import { SITE } from "@/data/site";
 
 const navLinks = [
   { href: "/services", label: "Services" },
@@ -8,6 +9,23 @@ const navLinks = [
   { href: "/memberships", label: "Memberships" },
   { href: "/reviews", label: "Reviews" },
 ];
+
+function PhoneIcon({ className = "h-4 w-4" }) {
+  return (
+    <svg
+      className={`shrink-0 ${className}`}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+    </svg>
+  );
+}
 
 function HomeIcon({ className = "h-6 w-6" }) {
   return (
@@ -61,6 +79,13 @@ export default function Nav() {
         </ul>
 
         <div className="flex shrink-0 items-center gap-3">
+          <a
+            href={SITE.phoneHref}
+            className="hidden items-center gap-2 rounded-full border border-zinc-300 bg-white/80 px-4 py-2 text-sm font-semibold text-zinc-800 shadow-sm transition hover:border-sky-400 hover:text-sky-700 sm:inline-flex"
+          >
+            <PhoneIcon className="h-4 w-4 text-sky-600" />
+            {SITE.phone}
+          </a>
           <Link
             href="/contact"
             className="hidden rounded-full bg-sky-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-600 sm:inline-block"
@@ -84,7 +109,14 @@ export default function Nav() {
                   {link.label}
                 </Link>
               ))}
-              <div className="mt-1 border-t border-zinc-100 px-4 py-3">
+              <div className="mt-1 border-t border-zinc-100 px-4 py-3 space-y-2">
+                <a
+                  href={SITE.phoneHref}
+                  className="flex items-center justify-center gap-2 rounded-full border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-800 hover:border-sky-400 hover:text-sky-700"
+                >
+                  <PhoneIcon className="h-4 w-4 text-sky-600" />
+                  {SITE.phone}
+                </a>
                 <Link
                   href="/contact"
                   className="block rounded-full bg-sky-500 px-4 py-2 text-center text-sm font-semibold text-white hover:bg-sky-600"
