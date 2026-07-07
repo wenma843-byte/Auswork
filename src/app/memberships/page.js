@@ -1,8 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 import MembershipPlans from "@/app/components/MembershipPlans";
-import SectionLabel from "@/app/components/SectionLabel";
-import { pagePhotos } from "@/data/images";
+import PageHero from "@/app/components/PageHero";
 
 export const metadata = {
   title: "Memberships | Auswork Brisbane",
@@ -13,24 +11,12 @@ export const metadata = {
 export default function MembershipsPage() {
   return (
     <div>
-      <section className="relative overflow-hidden bg-zinc-900">
-        <div className="absolute inset-0 opacity-45">
-          <Image src={pagePhotos.expectPhoto} alt="" fill className="object-cover" sizes="100vw" />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
-        <div className="relative mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-28">
-          <SectionLabel>
-            <span className="text-sky-300">Save year-round</span>
-          </SectionLabel>
-          <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
-            Auswork Memberships
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg text-white/90">
-            Stay spotless year-round and pocket the savings. Pick the rhythm that fits your home,
-            and cancel anytime.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        variant="blue"
+        label="Save year-round"
+        title="Auswork Memberships"
+        description="Stay spotless year-round and pocket the savings. Pick the rhythm that fits your home, and cancel anytime."
+      />
 
       <MembershipPlans showDetailsLink={false} />
 

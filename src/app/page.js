@@ -69,7 +69,7 @@ export default function Home() {
   return (
     <div>
       {/* Hero with video background */}
-      <section className="relative min-h-[88vh] overflow-hidden px-4 py-20 sm:px-6 sm:py-28 lg:py-36">
+      <section className="relative min-h-[88vh] overflow-hidden px-4 pb-20 hero-under-nav sm:px-6 sm:pb-28 lg:pb-36">
         <HeroVideoBackground />
         <div className="relative mx-auto max-w-5xl">
           <a

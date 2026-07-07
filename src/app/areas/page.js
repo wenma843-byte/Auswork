@@ -1,8 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
 import { areas } from "@/data/areas";
-import { pagePhotos } from "@/data/images";
 import SectionLabel from "@/app/components/SectionLabel";
+import PageHero from "@/app/components/PageHero";
 
 export const metadata = {
   title: "Service Areas | Auswork Brisbane",
@@ -13,24 +12,12 @@ export const metadata = {
 export default function AreasPage() {
   return (
     <div>
-      <section className="relative overflow-hidden bg-zinc-900">
-        <div className="absolute inset-0 opacity-45">
-          <Image src={pagePhotos.servicesHero} alt="" fill className="object-cover" sizes="100vw" />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
-        <div className="relative mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-28">
-          <SectionLabel>
-            <span className="text-sky-300">Proudly serving</span>
-          </SectionLabel>
-          <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
-            Across Brisbane, and a little beyond.
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg text-white/90">
-            From New Farm to Sandgate, Mount Gravatt to the Gold Coast. Find your area below for
-            local pricing and availability.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        variant="yellow"
+        label="Proudly serving"
+        title="Across Brisbane, and a little beyond."
+        description="From New Farm to Sandgate, Mount Gravatt to the Gold Coast. Find your area below for local pricing and availability."
+      />
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
         <div className="grid gap-8 lg:grid-cols-2">

@@ -5,6 +5,7 @@ import { getServiceBySlug, getOtherServices } from "@/data/services";
 import { serviceFaqs } from "@/data/content";
 import { serviceImages } from "@/data/images";
 import SectionLabel from "@/app/components/SectionLabel";
+import PageHero from "@/app/components/PageHero";
 import ServiceCard from "@/app/components/ServiceCard";
 import HowItWorks from "@/app/components/HowItWorks";
 import ReviewsSection from "@/app/components/ReviewsSection";
@@ -36,42 +37,31 @@ export default async function ServiceDetailPage({ params }) {
 
   return (
     <div>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-zinc-900">
-        <div className="absolute inset-0 opacity-50">
-          {heroImage && (
-            <Image src={heroImage} alt="" fill className="object-cover" sizes="100vw" priority />
-          )}
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
-        <div className="relative mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-28">
-          <nav className="mb-6 text-sm text-white/70" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-white">
+      <PageHero
+        variant="blue"
+        breadcrumb={
+          <>
+            <Link href="/" className="hover:opacity-100">
               Home
             </Link>
             <span className="mx-2">/</span>
-            <Link href="/services" className="hover:text-white">
+            <Link href="/services" className="hover:opacity-100">
               Services
             </Link>
             <span className="mx-2">/</span>
-            <span className="text-white">{service.name}</span>
-          </nav>
-          <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
-            {service.name}
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg text-white/90">
-            {service.tagline} {service.blurb}
-          </p>
-          <div className="mt-8">
-            <Link
-              href={`/contact?service=${service.slug}`}
-              className="inline-flex items-center gap-2 rounded-full bg-sky-500 px-8 py-4 text-lg font-bold text-white shadow-lg transition hover:bg-sky-600"
-            >
-              Get a Free Quote
-            </Link>
-          </div>
-        </div>
-      </section>
+            <span>{service.name}</span>
+          </>
+        }
+        title={service.name}
+        description={`${service.tagline} ${service.blurb}`}
+      >
+        <Link
+          href={`/contact?service=${service.slug}`}
+          className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-lg font-bold text-sky-700 shadow-lg transition hover:bg-sky-50"
+        >
+          Get a Free Quote
+        </Link>
+      </PageHero>
 
       {/* Intro */}
       <section className="border-t border-zinc-200 bg-white">

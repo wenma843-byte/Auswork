@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import { services } from "@/data/services";
-import { serviceImages, pagePhotos } from "@/data/images";
+import { serviceImages } from "@/data/images";
 import SectionLabel from "@/app/components/SectionLabel";
+import PageHero from "@/app/components/PageHero";
 import ServiceCard from "@/app/components/ServiceCard";
 import HowItWorks from "@/app/components/HowItWorks";
 import MembershipPlans from "@/app/components/MembershipPlans";
@@ -17,36 +17,27 @@ export const metadata = {
 export default function ServicesPage() {
   return (
     <div>
-      <section className="relative overflow-hidden bg-zinc-900">
-        <div className="absolute inset-0 opacity-50">
-          <Image src={pagePhotos.servicesHero} alt="" fill className="object-cover" sizes="100vw" />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
-        <div className="relative mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-28">
-          <nav className="mb-6 text-sm text-white/70" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-white">
+      <PageHero
+        variant="blue"
+        breadcrumb={
+          <>
+            <Link href="/" className="hover:opacity-100">
               Home
             </Link>
             <span className="mx-2">/</span>
-            <span className="text-white">Services</span>
-          </nav>
-          <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Professional window cleaning across Brisbane.
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg text-white/90 sm:text-xl">
-            Interior and exterior glass, tracks, screens and pool fencing — five specialist services,
-            one detail-obsessed crew that sweats every pane.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-sky-500 px-8 py-4 text-lg font-bold text-white shadow-lg transition hover:bg-sky-600"
-            >
-              Get a Free Quote
-            </Link>
-          </div>
-        </div>
-      </section>
+            <span>Services</span>
+          </>
+        }
+        title="Professional window cleaning across Brisbane."
+        description="Interior and exterior glass, tracks, screens and pool fencing — five specialist services, one detail-obsessed crew that sweats every pane."
+      >
+        <Link
+          href="/contact"
+          className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-lg font-bold text-sky-700 shadow-lg transition hover:bg-sky-50"
+        >
+          Get a Free Quote
+        </Link>
+      </PageHero>
 
       <section className="border-t border-zinc-200 bg-white">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import PageHero from "@/app/components/PageHero";
 import { sendQuoteRequest } from "./actions";
 
 export default function Contact() {
@@ -24,14 +25,12 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-white">
-      <section className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24">
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
-          Get a quote
-        </h1>
-        <p className="mt-4 text-zinc-600">
-          Tell us about your property (e.g. house size, storeys, interior/exterior windows) and we&apos;ll get back to you with a free quote.
-        </p>
-
+      <PageHero
+        variant="yellow"
+        title="Get a quote"
+        description="Tell us about your property (e.g. house size, storeys, interior/exterior windows) and we&apos;ll get back to you with a free quote."
+      />
+      <section className="mx-auto max-w-2xl px-4 pb-16 sm:px-6 sm:pb-24">
         {submitted ? (
           <div className="mt-10 rounded-xl border border-sky-200 bg-sky-50 p-6">
             <p className="font-medium text-sky-800">

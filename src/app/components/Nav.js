@@ -47,7 +47,7 @@ function HomeIcon({ className = "h-6 w-6" }) {
 
 export default function Nav() {
   return (
-    <header className="z-40 bg-transparent px-4 pt-4 sm:px-8 sm:pt-6 md:sticky md:top-0">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent px-4 pt-4 sm:px-8 sm:pt-6">
       <nav
         className="mx-auto flex max-w-7xl min-w-0 items-center justify-between gap-4 rounded-2xl border border-zinc-200 bg-white/85 px-4 py-4 shadow-lg shadow-zinc-200/50 backdrop-blur-md sm:px-6 sm:py-5"
         aria-label="Main navigation"

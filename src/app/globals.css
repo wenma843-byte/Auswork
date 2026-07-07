@@ -6,6 +6,9 @@
   --accent: #0ea5e9;
   --accent-hover: #0284c7;
   --accent-light: #f0f9ff;
+  --auswork-blue: #4db8e8;
+  --auswork-yellow: #f4b500;
+  --auswork-navy: #1b3a5c;
 }
 
 @theme inline {
@@ -49,8 +52,12 @@ body {
   outline-offset: 2px;
 }
 
-a:focus-visible,
-button:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+.hero-under-nav {
+  padding-top: 7.5rem;
+}
+
+@media (min-width: 640px) {
+  .hero-under-nav {
+    padding-top: 9.5rem;
+  }
 }
