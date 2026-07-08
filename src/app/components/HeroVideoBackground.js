@@ -4,10 +4,9 @@ import { pagePhotos } from "@/data/images";
 
 /**
  * Full-bleed autoplay hero background.
- * Video: public/video/hero.mp4 (stock footage, no branded logos).
  */
 export default function HeroVideoBackground({
-  src = "/video/hero.mp4",
+  src = "/video/home_page.mp4",
   poster = pagePhotos.heroPoster.src,
 }) {
   return (
@@ -18,7 +17,7 @@ export default function HeroVideoBackground({
         loop
         playsInline
         poster={poster}
-        className="h-full w-full object-cover"
+        className="h-full w-full object-cover object-[center_40%]"
       >
         <source src={src} type="video/mp4" />
       </video>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { services, windowSpecialties } from "@/data/services";
-import { serviceAreas } from "@/data/site";
+import { serviceAreas, SITE } from "@/data/site";
 import { serviceImages, pagePhotos } from "@/data/images";
 import HeroVideoBackground from "@/app/components/HeroVideoBackground";
 import SectionLabel from "@/app/components/SectionLabel";
@@ -71,14 +71,19 @@ export default function Home() {
       <section className="relative min-h-[88vh] overflow-hidden px-4 pb-20 hero-under-nav sm:px-6 sm:pb-28 lg:pb-36">
         <HeroVideoBackground />
         <div className="relative mx-auto max-w-5xl">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">
+          <a
+            href={SITE.googleReviewsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm transition hover:bg-white/20"
+          >
             <span className="flex gap-0.5">
               {[1, 2, 3, 4, 5].map((i) => (
                 <GoogleStar key={i} />
               ))}
             </span>
             <span className="text-sm font-medium text-white">5.0 on Google</span>
-          </div>
+          </a>
 
           <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-white drop-shadow-lg sm:text-5xl lg:text-6xl">
             Spotless Windows. Every Time

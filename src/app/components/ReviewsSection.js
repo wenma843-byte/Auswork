@@ -2,6 +2,7 @@
 
 import SectionLabel from "./SectionLabel";
 import { reviews } from "@/data/content";
+import { SITE } from "@/data/site";
 
 function StarRow({ count }) {
   return (
@@ -46,6 +47,17 @@ export default function ReviewsSection({ className = "bg-zinc-50" }) {
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
             Loved across Brisbane
           </h2>
+          <a
+            href={SITE.googleReviewsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-sky-600 transition hover:text-sky-700"
+          >
+            View our Google reviews
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
         </div>
 
         <div className="reviews-marquee mt-10" aria-label="Customer reviews carousel">
