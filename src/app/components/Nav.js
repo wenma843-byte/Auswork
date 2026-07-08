@@ -10,10 +10,10 @@ const navLinks = [
   { href: "/reviews", label: "Reviews" },
 ];
 
-function PhoneIcon({ className = "h-4 w-4" }) {
+function PhoneIcon({ className = "" }) {
   return (
     <svg
-      className={`shrink-0 ${className}`}
+      className={`h-4 w-4 shrink-0 ${className}`}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -27,24 +27,6 @@ function PhoneIcon({ className = "h-4 w-4" }) {
   );
 }
 
-function HomeIcon({ className = "h-6 w-6" }) {
-  return (
-    <svg
-      className={`shrink-0 ${className}`}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.8}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <path d="M4 11.5 12 5l8 6.5" />
-      <path d="M6 10v9h12v-9" />
-    </svg>
-  );
-}
-
 export default function Nav() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-transparent px-4 pt-4 sm:px-8 sm:pt-6">
@@ -54,12 +36,9 @@ export default function Nav() {
       >
         <Link
           href="/"
-          className="group/logo flex shrink-0 items-center gap-3 text-sky-700"
+          className="group/logo shrink-0"
           aria-label="Auswork home"
         >
-          <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-50 text-sky-600 shadow-sm transition duration-200 ease-out group-hover/logo:scale-105 group-hover/logo:bg-sky-100 group-hover/logo:text-sky-700 group-hover/logo:shadow-md group-active/logo:scale-95 sm:h-14 sm:w-14">
-            <HomeIcon className="h-6 w-6 transition duration-200 group-hover/logo:scale-110 sm:h-7 sm:w-7" />
-          </span>
           <Image
             src={ausworkLogo}
             alt="Auswork"
@@ -68,7 +47,7 @@ export default function Nav() {
           />
         </Link>
 
-        <ul className="hidden min-w-0 flex-1 items-center justify-center gap-x-5 text-sm font-medium text-zinc-600 md:flex lg:gap-x-8 lg:text-base">
+        <ul className="hidden min-w-0 flex-1 items-center justify-center gap-x-6 text-base font-semibold text-zinc-700 md:flex lg:gap-x-10 lg:text-lg">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link href={link.href} className="whitespace-nowrap hover:text-sky-600">
@@ -83,7 +62,7 @@ export default function Nav() {
             href={SITE.phoneHref}
             className="hidden items-center gap-2 rounded-full border border-zinc-300 bg-white/80 px-4 py-2 text-sm font-semibold text-zinc-800 shadow-sm transition hover:border-sky-400 hover:text-sky-700 sm:inline-flex"
           >
-            <PhoneIcon className="h-4 w-4 text-sky-600" />
+            <PhoneIcon className="text-sky-600" />
             {SITE.phone}
           </a>
           <Link
@@ -104,7 +83,7 @@ export default function Nav() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-sky-50 hover:text-sky-700"
+                  className="block px-4 py-3 text-base font-medium text-zinc-700 hover:bg-sky-50 hover:text-sky-700"
                 >
                   {link.label}
                 </Link>
@@ -114,7 +93,7 @@ export default function Nav() {
                   href={SITE.phoneHref}
                   className="flex items-center justify-center gap-2 rounded-full border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-800 hover:border-sky-400 hover:text-sky-700"
                 >
-                  <PhoneIcon className="h-4 w-4 text-sky-600" />
+                  <PhoneIcon className="text-sky-600" />
                   {SITE.phone}
                 </a>
                 <Link

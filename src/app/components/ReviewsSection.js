@@ -1,3 +1,5 @@
+"use client";
+
 import SectionLabel from "./SectionLabel";
 import { reviews } from "@/data/content";
 
@@ -13,7 +15,29 @@ function StarRow({ count }) {
   );
 }
 
+function ReviewCard({ review }) {
+  return (
+    <article className="flex w-[min(340px,85vw)] shrink-0 flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
+      <StarRow count={review.stars} />
+      <p className="mt-4 flex-1 text-sm leading-relaxed text-zinc-600">
+        &ldquo;{review.text}&rdquo;
+      </p>
+      <div className="mt-4 flex items-center gap-3 border-t border-zinc-100 pt-4">
+        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-sky-100 text-sm font-bold text-sky-700">
+          {review.name.charAt(0)}
+        </span>
+        <div>
+          <p className="text-sm font-semibold text-zinc-900">{review.name}</p>
+          <p className="text-xs text-zinc-500">{review.area} · Verified</p>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 export default function ReviewsSection({ className = "bg-zinc-50" }) {
+  const marqueeReviews = [...reviews, ...reviews];
+
   return (
     <section className={`border-t border-zinc-200 ${className}`}>
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
@@ -23,27 +47,13 @@ export default function ReviewsSection({ className = "bg-zinc-50" }) {
             Loved across Brisbane
           </h2>
         </div>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {reviews.map((review) => (
-            <article
-              key={review.name}
-              className="flex flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm"
-            >
-              <StarRow count={review.stars} />
-              <p className="mt-4 flex-1 text-sm leading-relaxed text-zinc-600">
-                &ldquo;{review.text}&rdquo;
-              </p>
-              <div className="mt-4 flex items-center gap-3 border-t border-zinc-100 pt-4">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-sky-100 text-sm font-bold text-sky-700">
-                  {review.name.charAt(0)}
-                </span>
-                <div>
-                  <p className="text-sm font-semibold text-zinc-900">{review.name}</p>
-                  <p className="text-xs text-zinc-500">{review.area} · Verified</p>
-                </div>
-              </div>
-            </article>
-          ))}
+
+        <div className="reviews-marquee mt-10" aria-label="Customer reviews carousel">
+          <div className="reviews-marquee-track py-2">
+            {marqueeReviews.map((review, index) => (
+              <ReviewCard key={`${review.name}-${index}`} review={review} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

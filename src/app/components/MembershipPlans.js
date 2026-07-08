@@ -18,18 +18,21 @@ function XIcon() {
   );
 }
 
-export default function MembershipPlans({ showDetailsLink = true }) {
+export default function MembershipPlans({ showDetailsLink = true, className = "bg-white" }) {
   return (
-    <section className="border-t border-zinc-200 bg-white">
+    <section className={`border-t border-zinc-200 ${className}`}>
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
         <div className="text-center">
           <SectionLabel>Save year-round</SectionLabel>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
-            Bundle &amp; save with a membership
+            Auswork Memberships
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-600">
-            Recurring plans keep your place spotless and save you up to $100 a clean. Cancel
-            anytime.
+            Stay spotless year-round and pocket the savings. Pick the rhythm that fits your home,
+            and cancel anytime.
+          </p>
+          <p className="mx-auto mt-2 max-w-2xl text-sm text-zinc-500">
+            Prices shown are savings per service vs one-off pricing.
           </p>
         </div>
         <div className="mt-10 flex flex-wrap justify-center gap-6">
@@ -70,7 +73,7 @@ export default function MembershipPlans({ showDetailsLink = true }) {
         </div>
         {showDetailsLink && (
           <p className="mt-8 text-center">
-            <Link href="/contact" className="font-semibold text-sky-600 hover:text-sky-700">
+            <Link href="/memberships" className="font-semibold text-sky-600 hover:text-sky-700">
               See full plan details →
             </Link>
           </p>

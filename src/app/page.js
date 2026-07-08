@@ -6,9 +6,8 @@ import { serviceImages, pagePhotos } from "@/data/images";
 import HeroVideoBackground from "@/app/components/HeroVideoBackground";
 import SectionLabel from "@/app/components/SectionLabel";
 import ServiceCard from "@/app/components/ServiceCard";
+import MembershipPlans from "@/app/components/MembershipPlans";
 import ReviewsSection from "@/app/components/ReviewsSection";
-
-const GOOGLE_REVIEW_URL = "https://g.page/r/Cavpt8wdrTT4EAE/review";
 
 const trustBadges = [
   "Fully Insured",
@@ -19,7 +18,7 @@ const trustBadges = [
 
 const stats = [
   { value: "5.0", label: "Average Google rating" },
-  { value: "500+", label: "Homes cleaned" },
+  { value: "50+", label: "Homes cleaned" },
   { value: "100%", label: "Satisfaction guarantee" },
   { value: "5", label: "Specialist services" },
 ];
@@ -53,7 +52,7 @@ const whyAuswork = [
   {
     title: "Set & forget plans",
     description:
-      "Recurring memberships keep the place shining year-round and save you up to $100 a clean. We just show up.",
+      "Recurring memberships keep the place shining year-round and save you up to $150 a clean. We just show up.",
   },
 ];
 
@@ -72,28 +71,22 @@ export default function Home() {
       <section className="relative min-h-[88vh] overflow-hidden px-4 pb-20 hero-under-nav sm:px-6 sm:pb-28 lg:pb-36">
         <HeroVideoBackground />
         <div className="relative mx-auto max-w-5xl">
-          <a
-            href={GOOGLE_REVIEW_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm transition hover:bg-white/20"
-          >
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">
             <span className="flex gap-0.5">
               {[1, 2, 3, 4, 5].map((i) => (
                 <GoogleStar key={i} />
               ))}
             </span>
-            <span className="text-sm font-medium text-white">5.0 stars on Google</span>
-          </a>
+            <span className="text-sm font-medium text-white">5.0 on Google</span>
+          </div>
 
-          <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-white drop-shadow-lg sm:text-5xl lg:text-7xl">
-            Dirty windows?
-            <br />
-            Not on our watch.
+          <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-white drop-shadow-lg sm:text-5xl lg:text-6xl">
+            Spotless Windows. Every Time
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-white/90 drop-shadow-md sm:text-xl">
-            Dirty windows don&apos;t stand a chance on our watch. Streak-free, spotless glass for
-            Brisbane&apos;s finest homes — every pane done right and guaranteed.
+            Professional window cleaning that leaves your glass sparkling, your home looking its
+            best and your view exactly as it should be. Reliable Service. Exceptional Results.
+            Guaranteed.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
@@ -303,72 +296,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Memberships */}
-      <section className="border-t border-zinc-200 bg-zinc-50">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
-          <div className="text-center">
-            <SectionLabel>Save big with</SectionLabel>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
-              Auswork Memberships
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-zinc-600">
-              Stay spotless year-round and pocket the savings. Pick the rhythm that fits your home,
-              and cancel anytime.
-            </p>
-            <p className="mt-2 text-sm text-zinc-500">
-              Prices shown are savings per service vs one-off pricing.{" "}
-              <Link href="/memberships" className="font-semibold text-sky-600 hover:text-sky-700">
-                See full plan details →
-              </Link>
-            </p>
-          </div>
-          <div className="mt-10 flex flex-wrap justify-center gap-6">
-            {[
-              {
-                name: "Quarterly",
-                saving: "25% off",
-                perks: ["Best value", "Priority scheduling", "Consistent shine"],
-              },
-              {
-                name: "Bi-Annual",
-                saving: "15% off",
-                perks: ["Great savings", "Seasonal coverage", "Flexible dates"],
-              },
-              {
-                name: "One-off",
-                saving: "Standard",
-                perks: ["No commitment", "Book when you need", "Same quality service"],
-              },
-            ].map((plan) => (
-              <div
-                key={plan.name}
-                className="flex w-[300px] flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-sky-500 hover:shadow-md"
-              >
-                <h3 className="text-center text-2xl font-bold uppercase tracking-wide text-sky-700">
-                  {plan.name}
-                </h3>
-                <p className="mt-4 text-center text-4xl font-bold text-zinc-900">{plan.saving}</p>
-                <p className="text-center text-xs uppercase tracking-wide text-zinc-500">
-                  per cleaning
-                </p>
-                <ul className="mt-6 flex flex-1 flex-col items-center space-y-3 text-zinc-700">
-                  {plan.perks.map((perk) => (
-                    <li key={perk} className="flex items-center gap-2">
-                      <span className="text-sky-500">✓</span> {perk}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="/contact"
-                  className="mt-6 block w-full rounded-full bg-sky-600 py-3 text-center text-sm font-semibold uppercase tracking-wide text-white hover:bg-sky-700"
-                >
-                  Get a quote
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <MembershipPlans className="bg-zinc-50" />
 
       {/* Who we are */}
       <section id="who-we-are" className="border-t border-zinc-200 bg-white">

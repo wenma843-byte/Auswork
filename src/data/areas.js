@@ -50,11 +50,6 @@ export const areas = [
     name: "Western Suburbs",
     suburbs: ["Kenmore", "Indooroopilly", "Chapel Hill", "Fig Tree Pocket", "Ipswich", "Springfield"],
   },
-  {
-    slug: "gold-coast",
-    name: "Gold Coast",
-    suburbs: ["Southport", "Surfers Paradise", "Broadbeach", "Burleigh Heads", "Robina", "Helensvale"],
-  },
 ];
 
 export function getAreaBySlug(slug) {

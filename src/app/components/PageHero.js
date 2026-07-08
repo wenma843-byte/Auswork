@@ -1,15 +1,15 @@
 const variants = {
   blue: {
-    section: "bg-gradient-to-b from-sky-400 via-sky-500 to-sky-600 text-white",
-    label: "text-sky-100",
+    section: "page-hero-blue",
+    label: "text-white/85",
     muted: "text-white/75",
     description: "text-white/90",
   },
   yellow: {
-    section: "bg-gradient-to-b from-amber-300 via-[var(--auswork-yellow)] to-amber-400 text-[var(--auswork-navy)]",
-    label: "text-amber-900/80",
-    muted: "text-[var(--auswork-navy)]/70",
-    description: "text-[var(--auswork-navy)]/85",
+    section: "page-hero-yellow",
+    label: "text-[var(--auswork-navy)]/70",
+    muted: "text-[var(--auswork-navy)]/65",
+    description: "text-[var(--auswork-navy)]/80",
   },
 };
 

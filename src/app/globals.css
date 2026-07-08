@@ -9,6 +9,10 @@
   --auswork-blue: #4db8e8;
   --auswork-yellow: #f4b500;
   --auswork-navy: #1b3a5c;
+  --auswork-blue-muted: #8eb4c8;
+  --auswork-blue-muted-deep: #6f9db3;
+  --auswork-yellow-muted: #e2d4a8;
+  --auswork-yellow-muted-deep: #d4c48e;
 }
 
 @theme inline {
@@ -59,5 +63,59 @@ body {
 @media (min-width: 640px) {
   .hero-under-nav {
     padding-top: 9.5rem;
+  }
+}
+
+.page-hero-blue {
+  background: linear-gradient(
+    to bottom,
+    var(--auswork-blue-muted),
+    var(--auswork-blue-muted-deep),
+    #5f8fa3
+  );
+  color: white;
+}
+
+.page-hero-yellow {
+  background: linear-gradient(
+    to bottom,
+    #ebe3c8,
+    var(--auswork-yellow-muted),
+    var(--auswork-yellow-muted-deep)
+  );
+  color: var(--auswork-navy);
+}
+
+.reviews-marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+
+.reviews-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 1.5rem;
+  animation: reviews-scroll 45s linear infinite;
+}
+
+.reviews-marquee:hover .reviews-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reviews-marquee-track {
+    animation: none;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@keyframes reviews-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }

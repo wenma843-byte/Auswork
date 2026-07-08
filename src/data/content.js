@@ -47,7 +47,7 @@ export const membershipPlans = [
   },
   {
     name: "Monthly",
-    saving: "$100 Off",
+    saving: "$150 Off",
     featured: false,
     perks: [
       { included: true, label: "FREE RainBlock Tech" },
